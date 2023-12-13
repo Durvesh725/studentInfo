@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="/scripts/script.js"></script>
+    <title>Walchand college of Engineering</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Walchand College Of Engineering</h1>
+            <br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="admin.htmll">Admin</a></li>
+                    <li><a href="form.html">Fill Student Information</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content">
+        <div class="container info-container">
+        <div class="container">
+            <!-- Login Page Content -->
+            <div class="login-form">
+                <h2>Login</h2>
+                <form onsubmit="event.preventDefault(); login();">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    
+                    <br><br>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- <footer>
+        <div class="container">
+            <p>&copy; 2023 WCE</p>
+        </div>
+    </footer> -->
+    <script>
+        var previousPage = document.referrer;
+
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            const user = 'Durvesh'
+            const pass = 'root'
+            if (username == user && password == pass) {
+                alert("Login successful! Welcome, " + username + "!");
+                
+                window.location.href = previousPage || "index.html";
+            } else {
+                alert("Incorrect Username or password");
+            }
+        }
+    </script>
+</body>
+
+</html>

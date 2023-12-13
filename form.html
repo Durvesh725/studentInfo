@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Walchand College Of Engineering</h1>
+            <br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="form.html">Fill Student Information</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <form id="registerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="eg. John Martin Doe" required>
+
+        <label for="year">Year</label>
+        <input type="number" id="year" name="year" placeholder="eg: 2022" required>
+
+        <label for="name">Department</label>
+        <input type="text" id="dept" name="dept" placeholder="eg: Mechanical" required>
+
+        <label for="seatNo">Exam Seat Number</label>
+        <input type="number" id="seatNo" name="seatNo" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+        <small style="color: red">Format: 10 digits without spaces or hyphens</small>
+
+        <br><br>
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <label for="file">Upload photo</label>
+        <input type="file" id="file" name="file" required>
+
+        <button type="button" onclick="validateForm()">Submit</button>
+
+        <div id="errorMessages" class="error-message"></div>
+    </form>
+
+    <script>
+        function validateForm() {
+            var previousPage = document.referrer;
+            const name = document.getElementById('name').value;
+            const year = document.getElementById('year').value;
+            const dept = document.getElementById('dept').value;
+            const seat = document.getElementById('seatNo').value;
+            const mobile = document.getElementById('mobile').value;
+            const address = document.getElementById('address').value;
+            const file = document.getElementById('file').value;
+
+            let errorMessage = '';
+
+            if (!name || !year || !dept || !seat || !mobile || !address || !file) {
+                errorMessage += 'All fields are required. ';
+            }
+
+            if (isNaN(year) || year < 0) {
+                errorMessage += 'Invalid year!';
+            }
+
+            if (errorMessage) {
+                document.getElementById('errorMessages').textContent = errorMessage;
+            } else {
+                alert('Form submitted successfully!');
+                document.getElementById('registerForm').reset();
+                document.getElementById('errorMessages').textContent = '';
+                window.location.href = previousPage || "index.html";
+            }
+        }
+    </script>
+</body>
+</html>
